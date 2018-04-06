@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        title #{title}
+    body
+        h1 Navigation
+        div users
+            <br>
+            a(href='/todos') Afficher les todos
+            <br>
+            a(href='/users/login') Se connecter
+            <br>
+            a(href='/users/add') Ajouter un utilisateur
+        ul
+            each user in users
+                li #{user.dataValues.nom}
+                        a(href='/users/' + user.dataValues.id + '/edit') Editer
+                        <br>
+                        a(href='/users/' + user.dataValues.id) Afficher
+                        form(method='POST' action='/users/' + user.dataValues.id + '?_method=DELETE')
+                            button(type='submit') Supprimer
